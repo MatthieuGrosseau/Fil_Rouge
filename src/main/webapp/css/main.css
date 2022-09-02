@@ -1,0 +1,198 @@
+@charset "ISO-8859-1";
+
+/* Reset */
+*{
+	margin:0;
+  	padding:0;
+}
+
+/* Body */
+
+body,html {
+	  height:100%;
+}
+
+body {
+  background-color: #1d201f;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: #faf0ca;
+}
+
+#main {
+  max-width: 1280px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+/* Header */
+
+h1,
+nav form, a{
+  font-family: Georgia, "Times New Roman", Times, serif, serif;
+  text-transform: uppercase;
+  color: #faf0ca;  
+}
+
+/* Header - Inputs */
+
+header form > input:hover {
+ 	background-image: linear-gradient(
+    to bottom,
+    rgba(7, 8, 8, 0.5),
+    rgba(7, 8, 8, 0.2)
+  );
+  color: black;
+}
+
+nav form > input {
+	width: 200px;
+	height: 30px;
+	background-image: linear-gradient(
+    to bottom,
+    rgba(7, 8, 8, 0.8),
+    rgba(7, 8, 8, 0.5)
+  );
+  border-radius: 30px;
+  border: inactiveborder;
+  color: #faf0ca;
+  font-size: 15px;
+  font-weight: bold;   
+}
+
+nav form > text {
+	 color: #faf0ca;	
+}
+
+/* Header - Image de fond */
+
+header {
+  background: url("../images/Header_SF.jpg") no-repeat center fixed;
+  background-size: cover;
+  background-size: 100%;
+  padding: 10px 10px 300px 10px;
+}
+
+/* Header - Barre de navigation */
+
+nav {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(7, 8, 8, 0.3),
+    rgba(7, 8, 8, 0.2)
+  );
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-radius: 30px;
+  padding: 10px 30px 0px 30px;
+  position: fixed;
+  width: 95%;
+}
+
+/* Header - Logo */
+
+#logo {
+  display: flex;
+  align-items: baseline;
+}
+
+#logo img {
+  width: 60px;
+  height: 60px;
+}
+
+header h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif,
+    serif;
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0 0 0 10px;
+}
+
+/* Header - Navigation principale */
+
+#navigation {
+	display: flex;	
+}
+
+#navigation form {
+  margin: 0px 20px;
+}
+
+.bouton_actif > input {
+	  background-color: aqua;		
+}
+
+/* Header - Connection/Inscription */
+
+.nom_prenom_bouton p {
+	text-align: center;
+	margin: 0;
+	font-weight: bold;
+	color: #A41623;
+}
+
+
+#connection {
+	display: flex;
+	 align-items: flex-end;
+}
+
+#connection img {
+  width: 60px;
+  height: 60px;
+}
+
+.bouton_connection > input {
+	  background-color: aqua;		
+}
+
+.bouton_deconnection > input {
+	  background-color: red;		
+}
+
+/* Main */
+
+#message {
+	margin: 0 0 20px;
+	color: red;
+}
+
+#recherche_cinema{
+	margin: 0 0 20px;
+}
+
+#liste_cinema{
+	display: flex;
+	gap: 20px;
+	flex-wrap: wrap;
+
+	
+}
+
+#cinemas{
+	display: flex;
+	align-content: flex-start;
+	gap: 10px;
+}
+
+#cinema_infos{
+	width: 100px;
+	margin: 0 10px 0 0;
+}
+
+/* Footer */
+
+footer {
+	text-align: center;
+	  background-image: linear-gradient(
+    to bottom,
+    rgba(7, 8, 8, 0.3),
+    rgba(7, 8, 8, 0.8)
+  );
+  position: absolute;
+  width: 100%;
+  padding-top: 50px;
+  height: 50px;
+}
