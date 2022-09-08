@@ -17,7 +17,7 @@
 		<!-- division modifier salle-->
 		<div id="formulaire_update_salle">
 
-			<form action="${pageContext.request.contextPath }/admin/ModifierSalle" method="POST">
+			<form action="${pageContext.request.contextPath }/gerant/ModifierSalle" method="POST">
 				<input type="hidden" value="${salle.noSalle }" name="noSalle" />
 		
 				<div>

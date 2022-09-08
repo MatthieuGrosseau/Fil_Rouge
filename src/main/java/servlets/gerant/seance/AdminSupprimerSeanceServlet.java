@@ -1,4 +1,4 @@
-package servlets.admin.salle;
+package servlets.gerant.seance;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,41 +7,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bll.SalleBLL;
-import bo.cinemas.Salle;
+import bll.SeanceBLL;
+import bo.cinemas.Seance;
 
 
-@WebServlet("/admin/SupprimerSalle")
-public class AdminSupprimerSalleServlet extends HttpServlet {
+@WebServlet("/gerant/SupprimerSeance")
+public class AdminSupprimerSeanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private SalleBLL bll;
+	private SeanceBLL bll;
 	
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		bll = new SalleBLL();
+		bll = new SeanceBLL();
 	}   
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Je passe dans get AdminSupprimerSalle");
+		System.out.println("Je passe dans get AdminSupprimerSeance");
 		
 		// 1. Recup�ration des params
-				String saId = request.getParameter("noSalle_salle");
-				System.out.println(saId);
+				String seId = request.getParameter("noSeance_seance");
+				System.out.println(seId);
 				
 				// 2. Je récupère le BO
-				Salle salleASupprimer = bll.selectById(Integer.parseInt(saId));
+				Seance seanceASupprimer = bll.selectById(Integer.parseInt(seId));
 				
 				// 3. Je d�clenche le traitement en BDD
-				bll.delete(salleASupprimer);
+				bll.delete(seanceASupprimer);
 				
 				// 4. J'envoie les attributs n�cessaires � ma jsp
-				request.setAttribute("message", "Le cinema d'id " + saId + " a été supprimé.");
+				request.setAttribute("message", "La seance d'id " + seId + " a été supprimé.");
 				
 				// 5. Redirection de l'utilisateur
 				// request.getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
-				response.sendRedirect("AdminAccueil");
+				response.sendRedirect("../admin/AdminAccueil");
 		
 	}
 

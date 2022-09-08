@@ -1,4 +1,4 @@
-package servlets.admin.salle;
+package servlets.gerant.salle;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import bo.cinemas.Salle;
 
 
 
-@WebServlet("/admin/AjouterSalle")
+@WebServlet("/gerant/AjouterSalle")
 public class AdminAjouterSalleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CinemaBLL cinemabll;
@@ -31,7 +31,7 @@ public class AdminAjouterSalleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Je passe dans get AdminAjouterSalle");
 		request.setAttribute("listeCinemas", cinemabll.selectAll());
-		request.getRequestDispatcher("/WEB-INF/jsp/admin/formulaireajoutSalle.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/gerant/formulaireajoutSalle.jsp").forward(request, response);
 	}
 
 
@@ -71,7 +71,7 @@ public class AdminAjouterSalleServlet extends HttpServlet {
 		
 		// 6. Rediriger mon utilisateur
 
-		response.sendRedirect("AdminAccueil?id_salle=" + salle.getNoSalle());
+		response.sendRedirect("../admin/AdminAccueil?id_salle=" + salle.getNoSalle());
 	}
 
 }

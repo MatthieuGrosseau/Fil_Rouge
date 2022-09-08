@@ -17,7 +17,7 @@
 		<!-- division formulaire add -->
 		<div id="formulaire_add_salle">
 
-			<form action="${pageContext.request.contextPath }/admin/AjouterSalle" method="POST">
+			<form action="${pageContext.request.contextPath }/gerant/AjouterSalle" method="POST">
 							
 				<div>
 					<label for="noCinema">Cinema : </label>

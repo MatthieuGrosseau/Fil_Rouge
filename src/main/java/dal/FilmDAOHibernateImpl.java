@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import bo.films.Film;
 
@@ -34,8 +35,12 @@ public class FilmDAOHibernateImpl implements FilmDAO{
 
 	@Override
 	public List<Film> selectByCritere(String critere) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<Film> query = em.createQuery("SELECT f from Film f WHERE f.nom LIKE :critere", Film.class);
+		query.setParameter("critere", "%" + critere + "%");
+		List<Film> resultat = query.getResultList();
+		em.close();
+		return resultat;		
 	}
 
 		

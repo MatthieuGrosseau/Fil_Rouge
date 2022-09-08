@@ -22,10 +22,10 @@
 			<p>Nom : ${film.nom }</p>
 			<p>Durée : ${film.dureeFilm }</p>
 			<p>Description : ${film.description }</p>
-			<p>Pegi : ${film.codePegi }</p>
-			<p>Version : ${film.codeVersion }</p>
-			<p>Categorie : ${film.codeCategorie }</p>
-			<p>Etat : ${film.codeEtat }</p>
+			<p>Pegi : ${film.pegi.codePegi }</p>
+			<p>Version : ${film.filmVersion.codeVersion }</p>
+			<p>Categorie : ${film.categorie.codeCategorie }</p>
+			<p>Etat : ${film.etat.codeEtat }</p>
 	
 		</div>
 	

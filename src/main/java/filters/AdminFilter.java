@@ -3,50 +3,38 @@ package filters;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet Filter implementation class AdminFilter
- */
-@WebFilter("/AdminFilter")
+import bo.personnes.Personne;
+
+
+@WebFilter("/admin/*")
 public class AdminFilter extends HttpFilter implements Filter {
-       
-    /**
-     * @see HttpFilter#HttpFilter()
-     */
-    public AdminFilter() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-
-		// pass the request along the filter chain
-		chain.doFilter(request, response);
+		HttpServletRequest req = (HttpServletRequest) request;	
+		Personne usercheck  = (Personne) req.getSession().getAttribute("user");
+		
+		if (usercheck != null) {
+			if (usercheck.getRolePersonne() == 1) {
+			System.out.println("Acc�s autoris�");
+			chain.doFilter(request, response);
+			} else {
+			System.out.println("Acc�s refus�");
+			HttpServletResponse resp = (HttpServletResponse) response;
+			resp.sendRedirect("../Accueil");
 	}
-
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+	} else {
+		System.out.println("Acc�s refus�");
+		HttpServletResponse resp = (HttpServletResponse) response;
+		resp.sendRedirect("../Accueil");
+}
 	}
-
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Formulaire modif seance</title>
+<title>Formulaire Add seance</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/main.css" />
 </head>
 <body>
@@ -14,17 +14,16 @@
 	<!-- main -->
 	<section id="main">
 
-		<!-- division modifier seance-->
-		<div id="formulaire_update_seance">
+		<!-- division formulaire add -->
+		<div id="formulaire_add_seance">
 
-			<form action="${pageContext.request.contextPath }/admin/ModifierSeance" method="POST">
-				<input type="hidden" value="${seance.noSeance }" name="noSeance" />
-		
+			<form action="${pageContext.request.contextPath }/gerant/AjouterSeance" method="POST">
+							
 				<div>
 					<label for="noSalle">Salle : </label>
 					<select name="noSalle" id="noSalle">
 							<c:forEach items="${listeSalles}" var="sa">
-								<option value="${sa.noSalle}" ${sa.noSalle == seance.salle.noSalle ? "selected" : ""}>${sa.nomSalle}</option>
+								<option value="${sa.noSalle}">${sa.nomSalle}</option>
 							</c:forEach>
 					</select>
 				</div>
@@ -32,7 +31,7 @@
 					<label for="noFilm">Film : </label>
 					<select name="noFilm" id="noFilm">
 							<c:forEach items="${listeFilms}" var="f">
-								<option value="${f.noFilm}" ${f.noFilm == seance.film.noFilm ? "selected" : ""}>${f.nom}</option>
+								<option value="${f.noFilm}">${f.nom}</option>
 							</c:forEach>
 					</select>
 				</div>

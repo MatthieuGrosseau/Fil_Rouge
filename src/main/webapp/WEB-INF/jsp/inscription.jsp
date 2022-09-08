@@ -17,7 +17,7 @@
 		<!-- division formulaire inscription -->
 		<div id="formulaire_inscription">
 		
-			<form action="${pageContext.request.contextPath }//Inscription" method="POST">
+			<form action="${pageContext.request.contextPath }/Inscription" method="POST">
 				<input type="hidden" value="3" name="rolePersonne" />
 		
 				<div>

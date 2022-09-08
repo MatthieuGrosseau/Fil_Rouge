@@ -95,11 +95,11 @@
 		              			<td>${currentSalle.nomSalle }</td>
 								<td>${currentSalle.cinema.nom }</td>
 								<td>${currentSalle.capacite }</td>
-								<td><form action="${pageContext.request.contextPath }/gerant/ModifierSalle" method="get">
+								<td><form action="${pageContext.request.contextPath }/admin/ModifierSalle" method="get">
 										<input type="hidden" value="${currentSalle.noSalle }" name="noSalle_salle" />
 										<input type="submit" name="modif" value="Modifier cette salle"/>
 								</form></td>
-								<td><form action="${pageContext.request.contextPath }/gerant/SupprimerSalle" method="get">
+								<td><form action="${pageContext.request.contextPath }/admin/SupprimerSalle" method="get">
 										<input type="hidden" value="${currentSalle.noSalle }" name="noSalle_salle" />
 		   								<input type="submit" value="Delete" />
 								</form></td>
@@ -111,7 +111,7 @@
           			</table>
      			</div>
      			
-     			<form action="${pageContext.request.contextPath }/gerant/AjouterSalle" method="get">
+     			<form action="${pageContext.request.contextPath }/admin/AjouterSalle" method="get">
     				<input type="submit" value="Ajouter" />
 				</form>
 			</fieldset>
@@ -145,11 +145,11 @@
 								<td>${currentSeance.film.nom }</td>
 								<td>${currentSeance.salle.nomSalle }</td>
 								<td>${currentSeance.salle.cinema.nom }</td>
-								<td><form action="${pageContext.request.contextPath }/gerant/ModifierSeance" method="get">
+								<td><form action="${pageContext.request.contextPath }/admin/ModifierSeance" method="get">
 										<input type="hidden" value="${currentSeance.noSeance }" name="noSeance_seance" />
 										<input type="submit" name="modif" value="Modifier cette seance"/>
 								</form></td>
-								<td><form action="${pageContext.request.contextPath }/gerant/SupprimerSeance" method="get">
+								<td><form action="${pageContext.request.contextPath }/admin/SupprimerSeance" method="get">
 										<input type="hidden" value="${currentSeance.noSeance }" name="noSeance_seance" />
 		   								<input type="submit" value="Delete" />
 								</form></td>
@@ -161,7 +161,7 @@
           			</table>
      			</div>
      			
-     			<form action="${pageContext.request.contextPath }/gerant/AjouterSeance" method="get">
+     			<form action="${pageContext.request.contextPath }/admin/AjouterSeance" method="get">
     				<input type="submit" value="Ajouter" />
 				</form>
 			</fieldset>

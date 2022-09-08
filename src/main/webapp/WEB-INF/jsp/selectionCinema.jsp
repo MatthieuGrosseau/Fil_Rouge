@@ -22,7 +22,12 @@
 			<h2>Liste des Films pour votre Cinema </h2>
 	
 			<form action="${pageContext.request.contextPath }/SelectionCinema" method="post">
-				<input type="search" name="critere" />
+					<label for="noCinema">Cinema : </label>
+					<select name="noCinema" id="noCinema">
+						<c:forEach items="${cinemas}" var="c">
+							<option value="${c.noCinema}" ${c.noCinema == salle.cinema.noCinema ? "selected" : ""}>${c.nom}</option>
+						</c:forEach>
+					</select>
 				<input type="submit" value="Rechercher" />
 			</form>
 	
@@ -42,8 +47,7 @@
 			            		<th>film</th>
 			            		<th>salle</th>
 			            		<th>cinema</th>
-			            		<th>consulter</th>
-			            		<th>supprimer</th>
+			            		<th>réserver</th>
  							</tr>
  						</thead>
  				
@@ -55,7 +59,7 @@
 								<td>${currentSeance.film.nom }</td>
 								<td>${currentSeance.salle.nomSalle }</td>
 								<td>${currentSeance.salle.cinema.nom }</td>
-								<td><form action="${pageContext.request.contextPath }/admin/Reserver" method="get">
+								<td><form action="${pageContext.request.contextPath }/Reservation" method="get">
 										<input type="hidden" value="${currentSeance.noSeance }" name="noSeance_seance" />
 										<input type="submit" name="reservation" value="Reserver cette seance"/>
 								</form></td>
@@ -67,13 +71,16 @@
             			</tbody>
           			</table>
      			</div>
-     			
-     			<form action="${pageContext.request.contextPath }/admin/AjouterSeance" method="get">
-    				<input type="submit" value="Ajouter" />
-				</form>
 			</fieldset>
 	
 		</div>
+	
+		<c:forEach var="entry" items="${map}">
+   			Film numéro ${entry.key.noFilm}<br>
+   				<c:forEach var="info" items="${entry.value}">
+       				Seance à la date du ${info.dateSeance}<br>
+  				 </c:forEach>
+		</c:forEach>
 	
 	</section>
 

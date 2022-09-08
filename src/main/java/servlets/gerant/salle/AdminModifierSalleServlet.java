@@ -1,4 +1,4 @@
-package servlets.admin.salle;
+package servlets.gerant.salle;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,7 +13,7 @@ import bo.cinemas.Cinema;
 import bo.cinemas.Salle;
 
 
-@WebServlet("/admin/ModifierSalle")
+@WebServlet("/gerant/ModifierSalle")
 public class AdminModifierSalleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CinemaBLL cinemabll;
@@ -43,7 +43,7 @@ public class AdminModifierSalleServlet extends HttpServlet {
 			request.setAttribute("salle", salle);
 			request.setAttribute("listeCinemas", cinemabll.selectAll());
 		// 5. Redirection vers la page de formulaire
-			request.getRequestDispatcher("/WEB-INF/jsp/admin/formulairemodifierSalle.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/gerant/formulairemodifierSalle.jsp").forward(request, response);
 	}
 
 
@@ -84,7 +84,7 @@ public class AdminModifierSalleServlet extends HttpServlet {
 			request.setAttribute("message", "La Salle " + saNomSalle +  " a bien été modifi� avec l'id : " + salle.getNoSalle());
 			
 		// 6. Rediriger mon utilisateur
-			response.sendRedirect("AdminAccueil?id_salle=" + salle.getNoSalle());
+			response.sendRedirect("../admin/AdminAccueil?id_salle=" + salle.getNoSalle());
 	}
 
 }

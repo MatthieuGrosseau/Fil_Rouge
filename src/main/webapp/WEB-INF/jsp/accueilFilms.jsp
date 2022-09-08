@@ -33,7 +33,7 @@
 				<div id="films">
 					<h3>Nom : ${film.nom }</h3>
 					<p>Durée : ${film.dureeFilm }</p>
-					<p>Pegi : ${film.codePegi } Version : ${film.codeVersion } Categorie : ${film.codeCategorie } Etat : ${film.codeEtat }</p>
+					<p>Pegi : ${film.pegi.codePegi } Version : ${film.filmVersion.codeVersion } Categorie : ${film.categorie.codeCategorie } Etat : ${film.etat.codeEtat }</p>
 			
 					<form action="${pageContext.request.contextPath }/DetailFilm" method="get">
 						<input type="hidden" value="${film.noFilm }" name="id_film" />

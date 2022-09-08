@@ -1,4 +1,4 @@
-package servlets.admin.seance;
+package servlets.gerant.seance;
 
 import java.io.IOException;
 import java.sql.Time;
@@ -18,8 +18,9 @@ import bo.cinemas.Seance;
 import bo.films.Film;
 
 
-@WebServlet("/admin/ModifierSeance")
-public class AdminModifierSeanceServlet extends HttpServlet {
+
+@WebServlet("/gerant/AjouterSeance")
+public class AdminAjouterSeanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SeanceBLL seancebll;
 	private SalleBLL sallebll;
@@ -31,41 +32,25 @@ public class AdminModifierSeanceServlet extends HttpServlet {
 		seancebll = new SeanceBLL();
 		sallebll = new SalleBLL();
 		filmbll = new FilmBLL();
-	}  
-
-
+	}   
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Je passe dans get AdminModifierSeance");
-		
-		// 1. Recup�ration des parametres
-			String seIdSeanceAModifier = request.getParameter("noSeance_seance");
-				
-		// 2. Je transforme dans le bon type
-			int IdSeanceAModifier = Integer.valueOf(seIdSeanceAModifier);
-					
-		// 3. Je r�cup�re mon contact aupr�s de ma bdd
-			Seance seance = seancebll.selectById(IdSeanceAModifier);
-					
-		// 4. Je passe le contact r�cup�r� � ma jsp
-			request.setAttribute("seance", seance);
-			request.setAttribute("listeSalles", sallebll.selectAll());
-			request.setAttribute("listeFilms", filmbll.selectAll());
-		// 5. Redirection vers la page de formulaire
-			request.getRequestDispatcher("/WEB-INF/jsp/admin/formulairemodifierSeance.jsp").forward(request, response);
+		System.out.println("Je passe dans get AdminAjouterSeance");
+		request.setAttribute("listeSalles", sallebll.selectAll());
+		request.setAttribute("listeFilms", filmbll.selectAll());
+		request.getRequestDispatcher("/WEB-INF/jsp/gerant/formulaireajoutSeance.jsp").forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Je passe dans post AdminModifierSeance");
+		System.out.println("Je passe dans post AdminAjouterSeance");
 		
 		// 1. Recup�ration des param�tres n�cessaires pour le traitement
-		String senoSeance = request.getParameter("noSeance");
 		String senoSalle = request.getParameter("noSalle");
 		String senoFilm = request.getParameter("noFilm");
 		String sedateSeance = request.getParameter("dateSeance");
 		String seheureSeance = request.getParameter("heureSeance");
 
-		System.out.println(senoSeance);
 		System.out.println(senoSalle);
 		System.out.println(senoFilm);
 		System.out.println(sedateSeance);
@@ -73,30 +58,31 @@ public class AdminModifierSeanceServlet extends HttpServlet {
 		
 		// 2. Je transforme dans le bon type
 		
+		
 		Salle seSalle = sallebll.selectById(Integer.parseInt(senoSalle));
 		Film seFilm = filmbll.selectById(Integer.parseInt(senoFilm));
-				
-				
-		// 3. Mise à jour du BO
-		Seance seance = seancebll.selectById(Integer.parseInt(senoSeance));
+		
+		// 3. Creation du BO
+		Seance seance = new Seance();
 		seance.setDateSeance(LocalDate.parse(sedateSeance));
-		seance.setHeureSeance(Time.valueOf(seheureSeance));
+		seance.setHeureSeance(Time.valueOf(seheureSeance+":00"));
 		seance.setSalle(seSalle); 
 		seance.setFilm(seFilm);
-
 		// 4. Envoi des informations aupr�s de la base de donn�es
 			try {
-				seancebll.update(seance);
+				seancebll.insert(seance);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-		// 5. Envoi d'un message � ma jsp
+			// 5. Envoi d'un message � ma jsp
 			request.setAttribute("message", "La Seance le " + sedateSeance + " a " + seheureSeance +  " a bien été modifi� avec l'id : " + seance.getNoSeance());
 			
+		
 		// 6. Rediriger mon utilisateur
-			response.sendRedirect("AdminAccueil?id_salle=" + seance.getNoSeance());
+
+		response.sendRedirect("../admin/AdminAccueil?id_salle=" + seance.getNoSeance());
 	}
 
 }

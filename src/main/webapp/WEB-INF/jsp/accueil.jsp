@@ -44,7 +44,7 @@
 						<p>${cinema.numeroTelephone }</p>
 						<p>${cinema.adresse } ${cinema.cpo } ${cinema.ville }</p>
 						
-					<form action="${pageContext.request.contextPath }/SelectionCinema" method="get">
+					<form action="${pageContext.request.contextPath }/SelectionCinema" method="post">
 						<input type="hidden" value="${cinema.noCinema }" name="noCinema" />
 						<input type="submit" value="Consulter" />
 					</form>
