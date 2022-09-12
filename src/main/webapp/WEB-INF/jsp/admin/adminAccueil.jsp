@@ -167,6 +167,58 @@
 			</fieldset>
 	
 		</div>
+		
+		<!-- division liste personne -->
+		<div id="admin_list_personne">
+
+			<fieldset class="Liste des personnes">
+	      	<legend>Liste des personnes</legend>
+				<div class="tableau">		              
+		   			<table>	                
+            			<thead>          	           
+            				<tr>         	             
+			            		<th>numero Personne</th>
+			            		<th>nom</th>
+			            		<th>prenom</th>
+			            		<th>adresse mail</th>
+			            		<th>mot de passe</th>
+			            		<th>role Personne</th>
+			            		<th>modifier</th>
+			            		<th>supprimer</th>
+ 							</tr>
+ 						</thead>
+ 				
+            			<tbody>
+              				<c:forEach items="${personnes }" var="currentPersonne">
+              				<tr>
+		              			<td>${currentPersonne.noPersonne }</td>
+								<td>${currentPersonne.nom }</td>
+								<td>${currentPersonne.prenom }</td>
+								<td>${currentPersonne.adresseMail }</td>
+								<td>${currentPersonne.motDePasse }</td>
+								<td>${currentPersonne.rolePersonne }</td>
+								<td><form action="${pageContext.request.contextPath }/admin/ModifierPersonne" method="get">
+										<input type="hidden" value="${currentPersonne.noPersonne }" name="noPersonne_personne" />
+										<input type="submit" name="modif" value="Modifier cette personne"/>
+								</form></td>
+								<td><form action="${pageContext.request.contextPath }/admin/SupprimerPersonne" method="get">
+										<input type="hidden" value="${currentPersonne.noPersonne }" name="noPersonne_personne" />
+		   								<input type="submit" value="Delete" />
+								</form></td>
+
+						
+                			</tr>
+                			</c:forEach>
+            			</tbody>
+          			</table>
+     			</div>
+     			
+     			<form action="${pageContext.request.contextPath }/admin/AjouterPersonne" method="get">
+    				<input type="submit" value="Ajouter" />
+				</form>
+			</fieldset>
+	
+		</div>
 
 	</section>
 

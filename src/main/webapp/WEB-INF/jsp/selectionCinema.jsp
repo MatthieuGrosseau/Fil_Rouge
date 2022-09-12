@@ -78,7 +78,12 @@
 		<c:forEach var="entry" items="${map}">
    			Film numéro ${entry.key.noFilm}<br>
    				<c:forEach var="info" items="${entry.value}">
-       				Seance à la date du ${info.dateSeance}<br>
+       				Seance à la date du ${info.dateSeance} et à l'heure de ${info.heureSeance}
+       				<form action="${pageContext.request.contextPath }/Reservation" method="get">
+										<input type="hidden" value="${info.noSeance }" name="noSeance_seance" />
+										<input type="submit" name="reservation" value="Reserver cette seance"/>
+					</form>
+       				<br>
   				 </c:forEach>
 		</c:forEach>
 	

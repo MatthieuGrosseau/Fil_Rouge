@@ -31,6 +31,9 @@
 			</c:when>
 		
 			<c:when test="${user.rolePersonne == 2}">
+				<form class="bouton_actif" action="/FilRouge/gerant/GerantAccueil" method="GET">
+					<input type="submit" name="connectionGerant" value="AccueilGerant" />
+				</form>
 			</c:when>
 			
 			<c:when test="${user.rolePersonne == 3}">
@@ -64,7 +67,6 @@
 			</c:when>
 		
 			<c:when test="${user.rolePersonne == 2}">
-				<p>Je suis un gerant</p>
 					<div class="nom_prenom_bouton">
 						<p>${user.prenom}, ${user.nom}</p>
 						<form class="bouton_deconnection" action="/FilRouge/Session" method="GET">

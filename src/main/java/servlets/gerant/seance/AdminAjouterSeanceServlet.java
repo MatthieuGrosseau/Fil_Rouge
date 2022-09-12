@@ -49,7 +49,7 @@ public class AdminAjouterSeanceServlet extends HttpServlet {
 		String senoSalle = request.getParameter("noSalle");
 		String senoFilm = request.getParameter("noFilm");
 		String sedateSeance = request.getParameter("dateSeance");
-		String seheureSeance = request.getParameter("heureSeance");
+		String seheureSeance = request.getParameter("heureSeance").substring(0, 5);
 
 		System.out.println(senoSalle);
 		System.out.println(senoFilm);

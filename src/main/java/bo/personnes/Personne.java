@@ -1,10 +1,20 @@
 package bo.personnes;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import bo.cinemas.Reservation;
 
 @Entity
 @Table(name="personnes")
@@ -24,6 +34,12 @@ public class Personne {
 	private int cpo;
 	private String ville;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name = "noPersonne")
+	private List<Reservation> reservations;
+
+
 	//Toujours un constructeur vide
 	public Personne() {}
 
@@ -162,6 +178,15 @@ public class Personne {
 		this.ville = ville;
 	}
 
+	
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+	
 	//Méthode toString pour afficher dans la console
 	@Override
 	public String toString() {

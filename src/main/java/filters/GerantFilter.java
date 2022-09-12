@@ -24,7 +24,7 @@ public class GerantFilter extends HttpFilter implements Filter {
 		
 		if (usercheck != null) {
 		if (usercheck.getRolePersonne() == 1 || usercheck.getRolePersonne() == 2 ) {
-			System.out.println("Acc�s autoris�");
+			System.out.println("Acces autorise gerant");
 			chain.doFilter(request, response);
 		} else {
 			System.out.println("Acc�s refus�");

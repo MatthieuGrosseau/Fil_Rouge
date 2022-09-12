@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bll.CinemaBLL;
+import bll.PersonneBLL;
 import bll.SalleBLL;
 import bll.SeanceBLL;
 
@@ -19,12 +20,14 @@ public class AdminAccueilServlet extends HttpServlet {
 	private CinemaBLL bllCinema;
 	private SalleBLL bllSalle;
 	private SeanceBLL bllSeance;
+	private PersonneBLL bllPersonne;
 	
 	@Override
 	public void init() throws ServletException {
 		bllCinema = new CinemaBLL();
 		bllSalle = new SalleBLL();
 		bllSeance = new SeanceBLL();
+		bllPersonne = new PersonneBLL();
 	}   
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,6 +36,7 @@ public class AdminAccueilServlet extends HttpServlet {
 		request.setAttribute("cinemas", bllCinema.selectAll());
 		request.setAttribute("salles", bllSalle.selectAll());
 		request.setAttribute("seances", bllSeance.selectAll());
+		request.setAttribute("personnes", bllPersonne.selectAll());
 		request.getRequestDispatcher("/WEB-INF/jsp/admin/adminAccueil.jsp").forward(request, response);
 	
 	}
